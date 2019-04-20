@@ -68,7 +68,7 @@ def process_log_file(cur, filepath):
         
         # get songid and artistid from song and artist tables
 #        cur.execute(join_select, (row.song, row.artist, row.length))
-        cur.execute(join_select, {'song':row.song, 'artist':row.artist, 'length':row.length})
+        cur.execute(song_select, {'song':row.song, 'artist':row.artist, 'length':row.length})
 
 
         results = cur.fetchone()
@@ -80,8 +80,7 @@ def process_log_file(cur, filepath):
             songid, artistid = None, None
 
         # insert songplay record
-#        songplay_data = 
-        songplay_data = (index+1, row.ts, row.userId, row.level, songid, 
+        songplay_data = (0, row.ts, row.userId, row.level, songid, 
                          artistid, row.sessionId, row.location, row.userAgent)
 
 
